@@ -33,10 +33,10 @@
                 </a>
                 <ul class="dropdown-menu submenu list-unstyled" id="dashboard" data-bs-parent="#accordionExample">
                     <li class="active">
-                        <a href="./index.html"> Analytics </a>
+                        <a href="{{route('endUser.index')}}"> Home End User </a>
                     </li>
                     <li>
-                        <a href="./index2.html"> Sales </a>
+                        <a href="{{route('admin.index')}}"> Home Dashboard </a>
                     </li>
                 </ul>
             </li>
@@ -104,7 +104,7 @@
                             <path d="M14.8185 14.0364C14.4045 14.0621 14.3802 14.6183 14.7606 14.7837V14.7837C15.803 15.237 16.5879 15.9043 17.1508 16.756C17.6127 17.4549 18.33 18 19.1677 18H20.9483C21.6555 18 22.1715 17.2973 21.9227 16.6108C21.9084 16.5713 21.8935 16.5321 21.8781 16.4932C21.5357 15.6286 20.9488 14.9921 20.0798 14.5864C19.2639 14.2055 18.2425 14.0483 17.0392 14.0008L17.0194 14H16.9997C16.2909 14 15.5506 13.9909 14.8185 14.0364Z" fill="#323232"/>
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
-                        <span>All Users</span>
+                        <span>All Users <span class="text-danger"></span></span>
 
                     </div>
                     <div>
@@ -150,7 +150,7 @@
                 <a href="#forms" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-                        <span>Orders</span>
+                        <span>Orders <span class="text-danger">({{\App\Models\Order::with('cart')->count()}})</span></span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -158,7 +158,7 @@
                 </a>
                 <ul class="dropdown-menu submenu list-unstyled" id="forms" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="{{route('admin.index')}}"> All Orders </a>
+                        <a href="{{route('admin.showOrder')}}"> All Orders </a>
                     </li>
                 </ul>
             </li>
@@ -166,8 +166,9 @@
             <li class="menu">
                 <a href="#pages" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
+
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                        <span>Pages</span>
+                        <span>Feedback Users <span class="text-danger">({{ \App\Models\Contact::count()}})</span> </span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -175,80 +176,7 @@
                 </a>
                 <ul class="dropdown-menu submenu list-unstyled" id="pages" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="./pages-knowledge-base.html"> Knowledge Base </a>
-                    </li>
-                    <li>
-                        <a href="./pages-faq.html"> FAQ </a>
-                    </li>
-                    <li>
-                        <a href="./pages-contact-us.html"> Contact Form </a>
-                    </li>
-                    <li>
-                        <a href="./user-profile.html"> Users </a>
-                    </li>
-                    <li>
-                        <a href="./user-account-settings.html"> Account Settings </a>
-                    </li>
-                    <li>
-                        <a href="./pages-error404.html" target="_blank"> Error </a>
-                    </li>
-                    <li>
-                        <a href="./pages-maintenence.html" target="_blank"> Maintanence </a>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#login" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Sign In <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="login" data-bs-parent="#pages">
-                            <li>
-                                <a target="_blank" href="./auth-boxed-signin.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./auth-cover-signin.html"> Cover </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#signup" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Sign Up <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="signup" data-bs-parent="#pages">
-                            <li>
-                                <a target="_blank" href="./auth-boxed-signup.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./auth-cover-signup.html"> Cover </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#unlock" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Unlock <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="unlock" data-bs-parent="#pages">
-                            <li>
-                                <a target="_blank" href="./auth-boxed-lockscreen.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./auth-cover-lockscreen.html"> Cover </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#reset" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Reset <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="reset" data-bs-parent="#pages">
-                            <li>
-                                <a target="_blank" href="./auth-boxed-password-reset.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./auth-cover-password-reset.html"> Cover </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#twoStep" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Two Step <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="twoStep" data-bs-parent="#pages">
-                            <li>
-                                <a target="_blank" href="./auth-boxed-2-step-verification.html"> Boxed </a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./auth-cover-2-step-verification.html"> Cover </a>
-                            </li>
-                        </ul>
+                        <a href="{{route('admin.showContact')}}"> All Feedback </a>
                     </li>
                 </ul>
             </li>
@@ -257,7 +185,7 @@
                 <a href="#more" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        <span>More</span>
+                        <span>Settings</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -266,35 +194,11 @@
                 <ul class="dropdown-menu submenu list-unstyled" id="more" data-bs-parent="#accordionExample">
 
                     <li>
-                        <a href="./map-leaflet.html"> Maps </a>
+                        <a href="{{route('admin.setting.index')}}"> setting </a>
                     </li>
                     <li>
-                        <a href="./charts-apex.html"> Charts </a>
+                        <a href="{{route('admin.setting.create')}}"> Add Setting </a>
                     </li>
-                    <li>
-                        <a href="./widgets.html"> Widgets </a>
-                    </li>
-                    <li class="sub-submenu dropend">
-                        <a href="#layouts" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle collapsed"> Layouts <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                        <ul class="dropdown-menu list-unstyled sub-submenu" id="layouts" data-bs-parent="#more">
-                            <li>
-                                <a href="./layout-blank-page.html"> Blank Page </a>
-                            </li>
-                            <li>
-                                <a href="./layout-empty.html"> Empty Page </a>
-                            </li>
-                            <li>
-                                <a href="./layout-full-width.html"> Full Width </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a target="_blank" href="../../documentation/index.html"> Documentation </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="../../documentation/changelog.html"> Changelog </a>
-                    </li>
-
                 </ul>
             </li>
 

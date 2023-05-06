@@ -8,6 +8,6 @@ trait CategoryTrait
 {
     private function getCategory()
     {
-            return Category::with('products')->get();
+            return Category::with('products')->paginate(10);
     }
 }

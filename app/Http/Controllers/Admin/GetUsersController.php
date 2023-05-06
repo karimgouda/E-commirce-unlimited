@@ -21,6 +21,15 @@ class GetUsersController extends Controller
         return $this->UsersInterface->index();
     }
 
+    public function ActiveUsers()
+    {
+        return $this->UsersInterface->ActiveUsers();
+    }
+
+    public function InActiveUsers()
+    {
+        return $this->UsersInterface->InActiveUsers();
+    }
     public function panUser($user)
     {
         return $this->UsersInterface->pan($user);

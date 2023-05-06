@@ -9,11 +9,7 @@
                 <div class="bg-light p-4 mb-30">
                     <form action="{{route('endUser.filter')}}" method="get">
                         @csrf
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" value="" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">All Price</label>
-                            <span class="badge border font-weight-normal">{{$products->count()}}</span>
-                        </div>
+                        <input type="number"  name="price" class="form-control mb-3" checked id="price-all" placeholder="Set the price">
                         @error('price')
                         {{$message}}
                         @enderror

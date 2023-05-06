@@ -10,4 +10,6 @@ interface ProductInterface
     public function edit($product);
     public function update($request ,$product);
     public function delete($product);
+
+    public function exportProduct();
 }

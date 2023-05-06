@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\User;
 
 use App\Http\Traits\CartsTrait;
+use App\Listeners\SendEmailAndRemoveCart;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetalis;

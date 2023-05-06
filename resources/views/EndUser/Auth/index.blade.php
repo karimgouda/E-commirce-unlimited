@@ -90,6 +90,7 @@
                       @enderror
                   </div>
 
+                  <a href="{{route('endUser.auth.login')}}" style="color: blue">Sign in</a>
 
 
                   <div class="row">

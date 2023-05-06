@@ -61,6 +61,7 @@
                                 @enderror
                             </div>
 
+                            <a href="{{route('endUser.auth.register')}}" style="color: blue">create new Account</a>
 
 
 

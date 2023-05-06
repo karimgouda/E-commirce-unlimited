@@ -9,7 +9,7 @@ trait ProductTrait
 
     private function getProduct()
     {
-        return Product::with('category:id,name')->get();
+        return Product::with('category:id,name')->paginate(10);
     }
 
 }

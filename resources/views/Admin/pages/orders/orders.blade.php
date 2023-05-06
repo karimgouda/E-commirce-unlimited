@@ -87,7 +87,7 @@
                                                 <td>{{$order->phone}}</td>
                                                 <td>{{$order->created_at}}</td>
                                                 <td class="text-center col-2">
-                                                    <form action="{{route('admin.delete',$order->id)}}" method="POST" style="display: inline">
+                                                    <form action="{{url("admin/orders/delete/$order->id/$ord->id")}}" method="POST" style="display: inline">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button class="btn btn-danger">{{__('dashboard.delete')}}</button>
@@ -96,8 +96,6 @@
 
 
                                             </tr>
-                                                    @else
-                                                        <h2>Not Found</h2>
                                                     @endif
 
                                                 @endforeach

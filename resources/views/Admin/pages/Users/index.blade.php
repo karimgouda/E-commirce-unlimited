@@ -4,7 +4,15 @@
     <div class="container" style="margin-top: 150px">
         <div class="row">
             <div class="col-lg-12">
-                <div class="table-responsive">
+                <div class="table-responsive ">
+                    <form action="{{route('admin.users.ActiveUsers')}}" method="post" class="my-4" style="display: inline">
+                        @csrf @method('PUT')
+                        <button class="btn btn-primary"> Active All Users </button>
+                    </form>
+                    <form action="{{route('admin.users.InActiveUsers')}}" method="post" class="my-4" style="display: inline">
+                        @csrf @method('PUT')
+                        <button class="btn btn-danger"> InActive All Users </button>
+                    </form>
                     <table class="table">
                         <thead>
                         <tr>
@@ -56,6 +64,7 @@
                         @endforelse
                         </tbody>
                     </table>
+                    {{$users->links()}}
                 </div>
             </div>
         </div>

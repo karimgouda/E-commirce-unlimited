@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Order_datalisController;
 use App\Http\Controllers\User\OrderController;
@@ -19,6 +20,7 @@ Route::group(
             Route::get('category/{id}','category')->name('category');
             Route::get('productDetails/{product}','productDetails')->name('productDetails');
             Route::get('search','search')->name('search');
+
             Route::group(['prefix'=>'auth','as'=>'auth.','middleware'=>'guest','controller'=> AuthController::class],function (){
                 Route::get('/login','login')->name('login');
                 Route::post('/signIn','signIn')->name('signIn');
@@ -45,6 +47,10 @@ Route::group(
             Route::group(['prefix'=>'shop','as','shop.','controller'=> ShopController::class,'middleware'=>'auth'],function (){
                 Route::get('shop','shop')->name('shop');
                 Route::get('filter','filter')->name('filter');
+            });
+            Route::group(['prefix'=>'contact','as','contact.','controller'=> ContactController::class,'middleware'=>'auth'],function (){
+                Route::get('index','index')->name('indexContact');
+                Route::post('store','store')->name('store');
             });
         });
 

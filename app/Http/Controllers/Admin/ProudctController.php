@@ -40,4 +40,9 @@ class ProudctController extends Controller
     {
         return $this->productInterface->delete($product);
     }
+
+    public function exportProduct()
+    {
+        return $this->productInterface->exportProduct();
+    }
 }

@@ -2,14 +2,19 @@
 
 namespace App\Http\Repositories\Admin;
 
+use App\Jobs\ActiveUsersJob;
+use App\Jobs\InActiveUsersJob;
 use App\Models\User;
+use Illuminate\Foundation\Application as ApplicationAlias;
+use Illuminate\Routing\Redirector;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AllUsersRepository implements \App\Http\Interfaces\Admin\AllUsersInterface
 {
 
     public function index()
     {
-        $users = User::get(['id','name','email','phone','address','active','role']);
+        $users = User::paginate(10);
         return  view('Admin.pages.Users.index',compact('users'));
     }
 
@@ -23,6 +28,19 @@ class AllUsersRepository implements \App\Http\Interfaces\Admin\AllUsersInterface
         }
         toast('Pan User Successflay','success');
         return redirect(route('admin.users.index'));
+    }
+
+    public function ActiveUsers()
+    {
+        ActiveUsersJob::dispatch();
+        Alert::success('loading Active', 'Success Message');
+        return back();
+    }
+    public function InActiveUsers()
+    {
+        InActiveUsersJob::dispatch();
+        Alert::success('loading InActive', 'Success Message');
+        return back();
     }
 
     public function delete($user)

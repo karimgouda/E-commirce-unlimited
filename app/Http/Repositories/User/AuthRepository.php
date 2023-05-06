@@ -3,8 +3,10 @@
 namespace App\Http\Repositories\User;
 
 use App\Http\Interfaces\User\AuthInterface;
+use App\Mail\UserMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthRepository implements AuthInterface
 {
@@ -21,6 +23,8 @@ class AuthRepository implements AuthInterface
         if ($is_login !=true || Auth::user()->active == 0){
             return redirect(route('endUser.auth.login'));
         }
+//        Mail::to($request->user())->send(new UserMail());
+        toast("welcome ".Auth::user()->name,'success');
         return  redirect(route('endUser.index'));
     }
 

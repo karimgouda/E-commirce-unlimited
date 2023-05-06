@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
@@ -21,7 +22,8 @@ class Category extends Model
         return $this::PATH.DIRECTORY_SEPARATOR.$value;
     }
 
-    public  function products(){
+    public  function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
     /**

@@ -36,6 +36,14 @@ class RepositoryServicesProvider extends ServiceProvider
             'App\Http\Interfaces\Admin\OrdersInterface',
             'App\Http\Repositories\Admin\OredersRepository'
         );
+        $this->app->bind(
+            'App\Http\Interfaces\Admin\SettingInterface',
+            'App\Http\Repositories\Admin\SettingRepository'
+        );
+        $this->app->bind(
+            'App\Http\Interfaces\Admin\ContactInterface',
+            'App\Http\Repositories\Admin\ContactRepository'
+        );
 
         //user
         $this->app->bind(
@@ -61,6 +69,10 @@ class RepositoryServicesProvider extends ServiceProvider
         $this->app->bind(
             'App\Http\Interfaces\User\ShopInterface',
             'App\Http\Repositories\User\ShopRepository'
+        );
+        $this->app->bind(
+            'App\Http\Interfaces\User\ContactInterface',
+            'App\Http\Repositories\User\ContactRepository'
         );
     }
 

@@ -2,11 +2,14 @@
 
 namespace App\Http\Repositories\Admin;
 
+use App\Exports\productExport;
 use App\Http\Traits\CategoryTrait;
 use App\Http\Traits\ImageTrait;
 use App\Http\Traits\Redis\ProductRedis;
 use App\Models\Admin\Product;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use function Symfony\Component\Translation\t;
 
 class ProductRepository implements \App\Http\Interfaces\Admin\ProductInterface
@@ -78,5 +81,10 @@ use ImageTrait ,ProductRedis ,CategoryTrait;
         $this->setProductRedis();
         toast('Product deleted Successflay','success');
         return back();
+    }
+
+    public function exportProduct(): BinaryFileResponse
+    {
+        return Excel::download(new productExport() , 'productExport.xlsx');
     }
 }

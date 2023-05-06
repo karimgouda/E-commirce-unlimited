@@ -4,6 +4,8 @@
     <div class="container" style="margin-top: 150px">
         <div class="row">
             <div class="col-lg-12">
+                <a href="{{route('admin.product.export')}}" class="btn btn-primary">Export Products</a>
+
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -12,7 +14,7 @@
                             <th class="text-center"> {{__("dashboard.product_image")}}</th>
                             <th>{{__("dashboard.count")}}</th>
                             <th>{{__("dashboard.price")}}</th>
-                            <th>{{__("dashboard.product_desc")}}</th>
+                            <th class="w-25 text-center">{{__("dashboard.product_desc")}}</th>
                             <th>{{__("dashboard.category_product")}}</th>
                             <th>{{__("dashboard.action")}}</th>
                         </tr>
@@ -22,13 +24,15 @@
                         <tr>
                             <td>{{$product->name}}</td>
                             <td>
-                                <div class="image w-25 m-auto">
+                                <div class="image w-100 m-auto">
                                     <img src="{{asset($product->image)}}" width="100%" alt="" srcset="">
                                 </div>
                             </td>
                             <td>{{$product->count}}</td>
-                            <td>{{$product->price}}</td>
-                            <td>{{$product->desc}}</td>
+                            <td >{{$product->price}}</td>
+                            <td>
+                                {{$product->desc}}
+                            </td>
                             <td>{{$product->category->name}}</td>
                             <td>
                                 <a href="{{route('admin.product.edit',$product)}}" class="btn btn-primary">{{__("dashboard.edit")}}</a>
@@ -46,6 +50,7 @@
                         @endforelse
                         </tbody>
                     </table>
+                    {{$products->links()}}
                 </div>
             </div>
         </div>

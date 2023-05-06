@@ -10,6 +10,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Ads;
 use App\Models\Cart;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,8 @@ use CategoryRedis,ProductRedis,CartsTrait;
     {
         $ads = Ads::get('image');
         $products = Product::paginate(8);
-       return view('EndUser.index',compact('ads','products'));
+        $settings = Setting::get();
+       return view('EndUser.index',compact('ads','products','settings'));
     }
     public function getCategoryOfProduct($id)
     {

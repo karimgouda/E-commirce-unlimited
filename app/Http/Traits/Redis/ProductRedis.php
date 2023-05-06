@@ -11,13 +11,13 @@ trait ProductRedis
     private function setProductRedis(){
         $redis = Redis::connection();
         $products = $this->getProduct();
-        $redis->set('products',$products);
+        $redis->set('productExport',$products);
         return true;
     }
     private function getProductRedis()
     {
         $redis = Redis::connection();
-        $data = json_decode($redis->get('{products}'));
+        $data = json_decode($redis->get('{productExport}'));
         return empty($data)?$this->getProduct():$data;
     }
 

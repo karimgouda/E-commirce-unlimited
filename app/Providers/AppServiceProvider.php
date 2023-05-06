@@ -7,6 +7,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +33,8 @@ class AppServiceProvider extends ServiceProvider
             'EndUser.pages.category_product',
             'EndUser.pages.checkOut',
             'EndUser.pages.shop',
-            'EndUser.pages.productDetails'
+            'EndUser.pages.productDetails',
+            'EndUser.pages.contact'
             ];
         View::composer($views,function (\Illuminate\View\View $view){
             $categories = Category::with('products')->paginate(12);
@@ -40,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
             $orders = Order::with('cart')->get();
             return $view->with(['categories'=>$categories , 'carts'=>$carts,'orders'=>$orders]);
         });
+        Paginator::useBootstrapFive();
     }
 
 
