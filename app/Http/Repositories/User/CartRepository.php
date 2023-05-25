@@ -11,11 +11,14 @@ class CartRepository implements CartInterface
 {
     public function cart($request)
     {
-        Cart::create([
-            'product_id'=>$request->product_id,
-            'user_id'=>Auth::id(),
-        ]);
-        return back();
+        $user_id = Auth::id();
+       if ($request->ajax()){
+           $cart = new Cart();
+           $cart->product_id = $request->product_id;
+           $cart->user_id = $user_id;
+           $cart->save();
+       }
+      return back();
     }
     public function cartShow()
     {

@@ -16,7 +16,16 @@ class Category extends Model
     protected $fillable=['name','image'];
     public $translatable = ['name'];
 
+    public static $translatableData = [
+        'name'=> [
+            'type' => 'text',
+            'validation'=>'required|max:255|unique:categories,name',
+        ]
+    ];
 
+    public static $rules = [
+        'image'=>'nullable|image|mimes:jpg,png,jpeg',
+    ];
     public function getImageAttribute($value):string
     {
         return $this::PATH.DIRECTORY_SEPARATOR.$value;

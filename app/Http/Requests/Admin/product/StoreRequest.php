@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin\product;
 
+use App\Http\services\LocalizationServices;
+use App\Models\Admin\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -21,15 +23,13 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name_en'=>'required|max:255',
-            'name_ar'=>'required|max:255',
+        $data = LocalizationServices::getModelRules(Product::$translatableData);
+
+        return array_merge($data , [
             'price'=>'required|numeric',
             'count'=>'required|numeric',
-            'desc_en'=>'required',
-            'desc_ar'=>'required',
             'category_id'=>'required|exists:categories,id',
             'image'=>'required|mimes:png,jpg,jpeg',
-        ];
+        ]);
     }
 }

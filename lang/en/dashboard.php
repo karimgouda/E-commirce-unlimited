@@ -10,8 +10,6 @@ return [
     'name_en'=>'Write the name in English',
     'name_ar'=>'Write the name in Arabic',
     'edit_category'=>' Edit Category',
-    'edit'=>'edit',
-    'delete'=>'delete',
     //product
     'product'=>'Products',
     'all_product'=>'All Product',
