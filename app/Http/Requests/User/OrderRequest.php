@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Rules\StockValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
@@ -22,7 +23,7 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'quantity'=>'required|numeric'
+            'quantity'=>[ new StockValidation() , 'required']
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories\Admin;
 
+use App\Http\services\LocalizationServices;
 use App\Http\Traits\CategoryTrait;
 use App\Http\Traits\ImageTrait;
 use App\Http\Traits\Redis\CategoryRedis;
@@ -30,13 +31,13 @@ private $categoryModel;
 
     public function store($request)
     {
+        $data = LocalizationServices::getLocalizationWithArray(Category::$translatableData , $request);
         $imageName = $this->uploadImage($request->image , $this->categoryModel::PATH);
-        $this->categoryModel::create([
-            'name'=>['en'=>$request->name_en , 'ar'=>$request->name_ar],
+        $this->categoryModel::create(array_merge($data , [
             'image'=>$imageName
-        ]);
+        ]));
         $this->setCategoryRedis();
-        toast('Add Category Successflay','success');
+        toast('Add Category Successfully','success');
         return redirect(route('admin.category.index'));
     }
 
@@ -47,13 +48,13 @@ private $categoryModel;
 
     public function update($request, $category)
     {
+        $data = LocalizationServices::getLocalizationWithArray(Category::$translatableData , $request);
         if ($request->image){
             $imageName = $this->uploadImage($request->image,$this->categoryModel::PATH,$category->getRawOriginal('image'));
         }
-        $category->update([
-            'name'=>['en'=>$request->name_en ,'ar'=>$request->name_ar],
-            'image'=>$imageName ?? $category->getRawOriginal('image')
-        ]);
+        $category->update(array_merge($data , [
+            'image' => $imageName??$category->getRawOriginal('image')
+        ]));
         $this->setCategoryRedis();
         toast('Category Updated Successflay','success');
         return redirect(route('admin.category.index'));

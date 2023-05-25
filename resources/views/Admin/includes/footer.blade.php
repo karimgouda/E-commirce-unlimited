@@ -19,5 +19,6 @@
 <script src="  {{asset("assetAdmin/src/plugins/src/tagify/tagify.min.js")}} "></script>
 
 <script src="  {{asset("assetAdmin/src/assets/js/apps/blog-create.js")}} "></script>
+
 @include('sweetalert::alert')
 @stack('js')

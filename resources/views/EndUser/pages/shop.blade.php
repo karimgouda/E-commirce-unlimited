@@ -82,8 +82,7 @@
                                 <img class="img-fluid w-100" src="{{asset($product->image)}}" alt="">
                                 <div class="product-action">
                                     <a class="btn btn-outline-dark btn-square" >
-                                        <form action="{{route('endUser.cart')}}" method="post" >
-                                            @csrf
+                                        <form class="addCart">
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
                                         </form>

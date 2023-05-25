@@ -10,7 +10,28 @@
 <!-- Template Javascript -->
 <script src="{{asset("assetEndUser/js/main.js")}}"></script>
 <script src="{{asset("assetEndUser/js/search.js")}}"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src=" {{asset('assetEndUser/js/search.js')}}"></script>
+<script>
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".addCart").submit(function (e){
+        e.preventDefault();
+        var formData = $(".addCart").serialize();
+        $.ajax({
+            url:"{{route('endUser.cart')}}",
+            type:"POST",
+            data:formData,
+            success:function (dataBack){
+                // $(".count").prepend(dataBack);
+                console.log(dataBack)
+
+            }
+        });
+    });
+</script>
 @include('sweetalert::alert')
 @stack('js')

@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use App\Models\Cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Type;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
@@ -16,6 +17,17 @@ class Product extends Model
     use HasFactory,HasTranslations,HasSlug ;
     protected $fillable=['name','price','image','count','desc','category_id'];
     public $translatable=['name','desc'];
+
+    public static $translatableData = [
+        'name'=>[
+            'type'=> 'text',
+            'validation'=>'required|max:255',
+        ],
+        'desc'=>[
+            'type'=>'textarea',
+            'validation'=>'required'
+        ]
+    ];
     const PATH = 'image/product';
     public function category(){
         return $this->belongsTo(Category::class);
