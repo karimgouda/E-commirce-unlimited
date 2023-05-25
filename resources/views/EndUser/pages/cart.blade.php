@@ -17,6 +17,9 @@
                     </tr>
                     </thead>
                     <tbody class="align-middle">
+                    @error('quantity')
+                    <p class="bg-danger text-white text-center">{{$message}}</p>
+                    @enderror
                     @foreach($carts as $cart)
                     <tr>
                         <td class="align-middle">

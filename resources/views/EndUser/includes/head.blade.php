@@ -13,4 +13,5 @@
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href=" {{asset("assetEndUser/css/style.css")}} " rel="stylesheet">
+<meta name="csrf-token" content="{!! csrf_token() !!}">
 @stack('css')

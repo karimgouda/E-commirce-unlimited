@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Http\services\LocalizationServices;
+use App\Models\Admin\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAdsRequest extends FormRequest
@@ -21,10 +23,8 @@ class UpdateAdsRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name_en'=>'nullable|max:255|unique:categories,name',
-            'name_ar'=>'nullable|max:255|unique:categories,name',
-            'image'=>'nullable|image|mimes:jpg,png,jpeg',
-        ];
+        $rules = Category::$rules;
+        $data = LocalizationServices::getModelRules(Category::$translatableData);
+        return array_merge($rules , $data);
     }
 }

@@ -28,4 +28,6 @@
 <!--  BEGIN CUSTOM STYLE FILE  -->
 <link rel="stylesheet" href="{{asset("assetAdmin/src/assets/css/light/apps/blog-create.css")}}">
 <link rel="stylesheet" href="{{asset("assetAdmin/src/assets/css/dark/apps/blog-create.css")}}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
 @stack('css')

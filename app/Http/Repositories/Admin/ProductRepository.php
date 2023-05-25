@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\Admin;
 
 use App\Exports\productExport;
+use App\Http\services\LocalizationServices;
 use App\Http\Traits\CategoryTrait;
 use App\Http\Traits\ImageTrait;
 use App\Http\Traits\Redis\ProductRedis;
@@ -36,17 +37,16 @@ use ImageTrait ,ProductRedis ,CategoryTrait;
 
     public function store($request)
     {
+        $data = LocalizationServices::getLocalizationWithArray($this->productModel::$translatableData , $request);
         $imageName = $this->uploadImage($request->image,$this->productModel::PATH);
-        $this->productModel::create([
-            'name'=>['en'=>$request->name_en,'ar'=>$request->name_ar],
-            'desc'=>['en'=>$request->desc_en,'ar'=>$request->desc_ar],
+        $this->productModel::create(array_merge($data , [
             'price'=>$request->price,
             'count'=>$request->count,
             'category_id'=>$request->category_id,
             'image'=>$imageName,
-        ]);
+        ]));
         $this->setProductRedis();
-        toast('Add Product Successflay','sucess');
+        toast('Add Product Successfully','success');
         return redirect(route('admin.product.index'));
     }
 
@@ -58,17 +58,16 @@ use ImageTrait ,ProductRedis ,CategoryTrait;
 
     public function update($request, $product)
     {
+        $data = LocalizationServices::getLocalizationWithArray($this->productModel::$translatableData , $request);
         if($request->image){
             $imageName = $this->uploadImage($request->image,$this->productModel::PATH,$product->getRawOriginal('image'));
         }
-        $product->update([
-            'name'=>['en'=>$request->name_en,'ar'=>$request->name_ar],
-            'desc'=>['en'=>$request->desc_en,'ar'=>$request->desc_ar],
+        $product->update(array_merge($data , [
             'price'=>$request->price,
             'count'=>$request->count,
             'category_id'=>$request->category_id,
             'image'=>$imageName ?? $product->getRawOriginal('image')
-        ]);
+        ]));
         $this->setProductRedis();
         toast('Product Updated Successflay','success');
         return redirect(route('admin.product.index'));

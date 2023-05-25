@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin\product;
 
+use App\Http\services\LocalizationServices;
+use App\Models\Admin\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -21,15 +23,12 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name_en'=>'nullable|max:255',
-            'name_ar'=>'nullable|max:255',
-            'price'=>'nullable|numeric',
-            'count'=>'nullable|numeric',
-            'desc_en'=>'nullable',
-            'desc_ar'=>'nullable',
-            'category_id'=>'nullable|exists:categories,id',
+        $data = LocalizationServices::getModelRules(Product::$translatableData);
+        return array_merge($data , [
+            'price'=>'required|numeric',
+            'count'=>'required|numeric',
+            'category_id'=>'required|exists:categories,id',
             'image'=>'nullable|mimes:png,jpg,jpeg',
-        ];
+        ]);
     }
 }
