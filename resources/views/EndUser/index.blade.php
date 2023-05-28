@@ -140,9 +140,12 @@
                                     <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
                                 </form>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="">
+                                <form class="addFav">
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <button class="btn btn-outline-dark btn-square"><i class="far fa-heart"></i></button>
+                                </form>
+                            </a>
                         </div>
                     </div>
                     <div class="text-center py-4">
@@ -209,12 +212,16 @@
                                     <form class="addCart">
 
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
+                                        <button class="btn btn-outline-dark btn-square" ><i class="fa fa-shopping-cart"></i></button>
                                     </form>
                                 </a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="">
+                                    <form class="addFav">
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        <button class="btn btn-outline-dark btn-square"><i class="far fa-heart"></i></button>
+                                    </form>
+                                </a>
+
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -310,7 +317,7 @@
                             <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                </div>
+                </div>storeFav
             </div>
         </div>
         <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">

@@ -87,8 +87,12 @@
                                             <button class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></button>
                                         </form>
                                     </a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="">
+                                        <form class="addFav">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <button class="btn btn-outline-dark btn-square"><i class="far fa-heart"></i></button>
+                                        </form>
+                                    </a>
                                 </div>
                             </div>
                             <div class="text-center py-4">

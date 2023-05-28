@@ -74,6 +74,10 @@ class RepositoryServicesProvider extends ServiceProvider
             'App\Http\Interfaces\User\ContactInterface',
             'App\Http\Repositories\User\ContactRepository'
         );
+        $this->app->bind(
+            'App\Http\Interfaces\User\FavoriteInterface',
+            'App\Http\Repositories\User\FavoriteRepository'
+        );
     }
 
     /**

@@ -32,6 +32,22 @@
             }
         });
     });
+
+
+    $(".addFav").submit(function (e){
+        e.preventDefault();
+        var formData = $(".addFav").serialize();
+        $.ajax({
+            url:"{{route('endUser.storeFav')}}",
+            type:"POST",
+            data:formData,
+            success:function (dataBack){
+                // $(".count").prepend(dataBack);
+                console.log(dataBack)
+
+            }
+        });
+    });
 </script>
 @include('sweetalert::alert')
 @stack('js')

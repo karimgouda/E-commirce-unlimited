@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Order_datalisController;
 use App\Http\Controllers\User\OrderController;
@@ -51,6 +52,11 @@ Route::group(
             Route::group(['prefix'=>'contact','as','contact.','controller'=> ContactController::class,'middleware'=>'auth'],function (){
                 Route::get('index','index')->name('indexContact');
                 Route::post('store','store')->name('store');
+            });
+            Route::group(['prefix'=>'fav','as','fav.','controller'=> FavoriteController::class,'middleware'=>'auth'],function (){
+                Route::get('index','indexFav')->name('indexFav');
+                Route::post('storeFav','storeFav')->name('storeFav');
+                Route::delete('deleteFav/{fav}','deleteFav')->name('deleteFav');
             });
         });
 
