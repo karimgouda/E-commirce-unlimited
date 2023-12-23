@@ -7,6 +7,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Observers\ProductObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Order::observe(ProductObserver::class);
         $views = [
             'EndUser.index',
             'EndUser.pages.cart',

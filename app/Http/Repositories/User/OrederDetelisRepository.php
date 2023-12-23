@@ -14,7 +14,7 @@ class OrederDetelisRepository implements \App\Http\Interfaces\User\OrderDetailsI
 use CartsTrait;
     public function create($request)
     {
-        $data = OrderDetalis::create([
+         OrderDetalis::create([
            'first_name'=>$request->first_name,
            'last_name'=>$request->last_name,
             'email'=>$request->email,

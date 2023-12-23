@@ -13,7 +13,7 @@ class OrderRepository implements \App\Http\Interfaces\User\OrderInterface
     {
        $cart = Cart::findOrFail($cart);
 
-      $order =  Order::create([
+         Order::create([
             'cart_id'=>$cart->id,
             'quantity'=>$request->quantity,
           'total'=>$request->quantity * $cart->product->price,
