@@ -12,6 +12,6 @@ class productExport implements FromView
     public function view(): View
     {
         $products = Product::get();
-        return \view('Admin.pages.product.export.exportProduct');
+        return \view('Admin.pages.product.export.exportProduct',compact('products'));
     }
 }
